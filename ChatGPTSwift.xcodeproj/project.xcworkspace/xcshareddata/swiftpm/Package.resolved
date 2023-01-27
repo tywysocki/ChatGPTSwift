@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "openai",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TyWysocki/OpenAI",
+      "state" : {
+        "branch" : "main",
+        "revision" : "16b92e89780c715f0f03447927cd7b2746321b8a"
+      }
+    }
+  ],
+  "version" : 2
+}
