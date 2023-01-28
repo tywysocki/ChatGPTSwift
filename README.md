@@ -2,7 +2,7 @@
 
 IOS Chatbot application that utilizes ChatGPT and the OpenAI APIs.
 
-This is an example of how to integrate my OpenAI Swift package in your project. 
+This is an example of how to integrate the OpenAI Swift package in your project. 
 Take a look at my OpenAI repository for a more detailed explination on API types
 and integration.
 
@@ -15,8 +15,8 @@ and integration.
 
    .Package(url: "https://github.com/TyWysocki/OpenAISwift.git", majorVersion: 1)
 
-3. Generate a authorization token [here](https://beta.openai.com/account/api-keys) & Copy/Paste your token
-   inside the setup function on line 16 in the ContentView:
+3. Generate an authorization token [here](https://beta.openai.com/account/api-keys) & Copy/Paste your token
+   inside the setup function on line 16 in the ContentView of ChatGPTSwift:
    
    >     client = OpenAI(authToken: "TOKEN")
    
