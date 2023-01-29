@@ -1,4 +1,4 @@
-# ChatGPTSwift
+# ChatGPTSwift  🤖
 
 IOS Chatbot application that utilizes ChatGPT and the OpenAI APIs.
 
@@ -7,7 +7,7 @@ Take a look at my OpenAI repository for a more detailed explination on API types
 and integration.
 
 
-## Usage
+## Usage  💻
 
 1. Open ChatGPTSwift in Xcode
 
@@ -23,7 +23,7 @@ and integration.
 4. Run the program and ask ChatGPT to preform a task, answer a question, etc.
 
 
-## License
+## License  📜
 
 The MIT License (MIT)
 
