@@ -20,7 +20,8 @@ and integration.
    
    >     client = OpenAI(authToken: "TOKEN")
    
-4. Run the program and ask ChatGPT to preform a task, answer a question, etc.
+4. Run the program and ask ChatGPT to preform a task, answer a question, etc. You can adjust the length of the response 
+   by updating the maxTokens parameter.
 
 
 ## License  📜
