@@ -13,11 +13,11 @@ final class ViewModel: ObservableObject {
     private var client: OpenAI?
     
     func setup() {
-        client = OpenAI(authToken: "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")
+        client = OpenAI(authToken: "TOKEN")
     }
     
     func send(text: String, completion: @escaping (String) -> Void) {
-        client?.sendCompletion(with: text, maxTokens: 1500, completionHandler: { result in
+        client?.sendCompletion(with: text, maxTokens: 500, completionHandler: { result in
             switch result {
             case.success(let model):
                 let output = model.choices.first?.text ?? ""
@@ -35,58 +35,84 @@ struct ContentView: View {
     @State var models = [String]()
     
     var body: some View {
-        ZStack {
-            GeometryReader { geometry in
-                ScrollView(showsIndicators: false) {
-                    
+        GeometryReader { geometry in
+            ScrollView(showsIndicators: false) {
+                ZStack {
                     VStack(alignment: .leading) {
                         ForEach(models, id: \.self) { string in
                             Text(string)
-                                .foregroundColor(.black)
-                                .bold()
+                                .foregroundColor(.primary)
+                                .padding()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .stroke(.secondary, lineWidth: 1)
+                                        .foregroundColor(.primary)
+                                )
+                                .padding(3)
                         }
-                        
+                                                
                         Spacer()
                         
                         HStack {
-                            TextField("Type here...", text: $text)
-                                .bold()
-                                .foregroundColor(.black)
-                            Button("Send") {
-                                send()
-                            }
-                        }
-                    }
-                    .onAppear {
-                        viewModel.setup()
-                    }
-                    .padding()
-                    .frame(minHeight: geometry.size.height)
-                }
-                .frame(width: geometry.size.width)
-            }
-        }
-    }
-    
-    func send() {
-        guard !text.trimmingCharacters(in: .whitespaces).isEmpty else {
-            return
-        }
-        models.append("Me: \(text)")
-        viewModel.send(text: text) { response in
-            DispatchQueue.main.async {
-                self.models.append("ChatGPT: "+response)
-                self.text = ""
-            }
-        }
-    }
+                            HStack(alignment: .bottom) {
+                               TextField("Type here...", text: $text, axis: .vertical)
+                                   .padding(6)
+                                   .font(.body)
+                                   .textInputAutocapitalization(.never)
+                               
+                               Spacer()
+                               
+                               VStack {
+                                       Button(action: {
+                                           send()
+                                       }) {
+                                           Image(systemName: "arrow.up.circle.fill")
+                                               .resizable()
+                                               .aspectRatio(contentMode: .fit)
+                                       }
+                               }
+                               .frame(maxHeight: 35)
+                           }
+                           .frame(maxWidth: .infinity)
+                           .padding(3)
+                           .overlay(
+                               RoundedRectangle(cornerRadius: 20)
+                                   .stroke(.secondary, lineWidth: 1))
+                       }
+                       .padding(5)
+                   }
+                   .onAppear {
+                       viewModel.setup()
+                   }
+                   .frame(minHeight: geometry.size.height)
+               }
+               .frame(width: geometry.size.width)
+           }
+       }
+   }
+   
+   func send() {
+       guard !text.trimmingCharacters(in: .whitespaces).isEmpty else {
+           return
+       }
+       models.append("Me: \(text)")
+           viewModel.send(text: text) { response in
+           DispatchQueue.main.async {
+               self.models.append("ChatGPT: " + response)
+               self.text = ""
+           }
+       }
+   }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+   static var previews: some View {
+       ContentView()
+   }
 }
+        
+
+ 
      
         
 
