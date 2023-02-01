@@ -13,14 +13,15 @@ and integration.
 
 2. Use Swift Package Manager to integrate the OpenAI library by adding the following dependency in your Package.swift file:
 
-   .Package(url: "https://github.com/TyWysocki/OpenAISwift.git", majorVersion: 1)
+   .Package(url: "https://github.com/TyWysocki/OpenAI.git", majorVersion: 1)
 
 3. Generate an authorization token [here](https://beta.openai.com/account/api-keys) & Copy/Paste your token
    inside the setup function on line 16 in the ContentView of ChatGPTSwift:
    
    >     client = OpenAI(authToken: "TOKEN")
    
-4. Run the program and ask ChatGPT to preform a task, answer a question, etc.
+4. Run the program and ask ChatGPT to preform a task, answer a question, etc. You can adjust the length of the response 
+   by updating the maxTokens parameter.
 
 
 ## License  📜
